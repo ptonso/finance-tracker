@@ -1,11 +1,21 @@
 
 .env
 
-# personal content
+# Ignore all files inside these folders
 /data/00_raw/*
 /data/01_cleaned/*
 /data/02_categorized/*
 /data/03_reconciled/*
+
+# Allow tracking of the folders themselves
+!/data/00_raw/
+!/data/01_cleaned/
+!/data/02_categorized/
+!/data/03_reconciled/
+
+# Ignore Python cache files and folders
+__pycache__/
+**/__pycache__/
 
 # complex functionality
 /src/sheets_api.py
@@ -15,4 +25,4 @@
 # Ignore virtual environment
 /venv/
 
-/__pycache__/
+
