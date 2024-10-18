@@ -15,17 +15,15 @@ load_dotenv()
 
 model_pickle_path = 'data/naive_bayes_model.pkl'
 
-lookup_json_path = os.getenv("CATEGORY_LOOKUP_PATH")
-
 
 def load_categories():
-    lookup_json_path = lookup_json_path
+    lookup_json_path = os.getenv("CATEGORY_LOOKUP_PATH")
     with open(lookup_json_path, 'r') as f:
         lookup_table = json.load(f)
     return list(lookup_table.keys())    
 
 def load_lookup_table():
-    lookup_json_path = lookup_json_path
+    lookup_json_path = os.getenv("CATEGORY_LOOKUP_PATH")
     with open(lookup_json_path, 'r') as f:
         lookup_table = json.load(f)
     return lookup_table

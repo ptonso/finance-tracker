@@ -7,11 +7,14 @@
 /data/02_categorized/*
 /data/03_reconciled/*
 
+/data/model/*
+
 # Allow tracking of the folders themselves
 !/data/00_raw/
 !/data/01_cleaned/
 !/data/02_categorized/
 !/data/03_reconciled/
+!/data/model/
 
 # Ignore Python cache files and folders
 __pycache__/

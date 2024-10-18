@@ -21,25 +21,26 @@ def reconcile_balances(balances, input_dir, output_dir):
 
             final_balance = df['balance'].iloc[-1]
 
-            target_balance = bank_data[month]
+            target_balance = bank_data.get(month, None)
+            if target_balance is None:
+                print(f"Target balance for {bank} in {month} is None. Adding 0.0 reconciliation adjustment")
+                target_balance = final_balance
+
             adjustment_amount = target_balance - final_balance
 
-            if abs(adjustment_amount) > 1e-2:
-                reconciler_transaction = pd.DataFrame({
-                    'date': [df.iloc[-1]['date']],
-                    'bank': [bank],
-                    'income': [adjustment_amount if adjustment_amount > 0 else 0],
-                    'outcome': [-adjustment_amount if adjustment_amount < 0 else 0],
-                    'category': ['reconciler adjustment'],
-                    'action': [''],
-                    'description': [''],
-                    'participant': [''],
-                    'original_id': [''],
-                    'balance': [target_balance],
-                })
+            reconciler_transaction = pd.DataFrame({
+                'date': [df.iloc[-1]['date']],
+                'bank': [bank],
+                'income': [adjustment_amount if adjustment_amount > 0 else 0],
+                'outcome': [-adjustment_amount if adjustment_amount < 0 else 0],
+                'category': ['reconciler adjustment'],
+                'description': [''],
+                'original_id': [''],
+                'balance': [target_balance],
+            })
 
-                df = pd.concat([df, reconciler_transaction], ignore_index=True)
-                df['balance'] = previous_balance + (df['income'].fillna(0) - df['outcome'].fillna(0)).cumsum()
+            df = pd.concat([df, reconciler_transaction], ignore_index=True)
+            df['balance'] = previous_balance + (df['income'].fillna(0) - df['outcome'].fillna(0)).cumsum()
 
             df.to_csv(output_path, index=False)
 
