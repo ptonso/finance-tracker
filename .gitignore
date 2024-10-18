@@ -21,8 +21,6 @@ __pycache__/
 **/__pycache__/
 
 # complex functionality
-/src/sheets_api.py
-
 /data/my_category_lookup.json
 
 # Ignore virtual environment
