@@ -22,6 +22,7 @@ __pycache__/
 
 # complex functionality
 /data/my_category_lookup.json
+/data/my_balances.json
 
 # Ignore virtual environment
 /venv/

@@ -1,7 +1,18 @@
 import os
+import json
 import pandas as pd
 
 from .frame_csv import frame_csv
+from dotenv import load_dotenv
+load_dotenv()
+
+def load_balances():
+    balances_path = os.getenv("BALANCES_PATH")
+    with open(balances_path, 'r') as f:
+        balances = json.load(f)
+    return balances
+
+
 
 def reconcile_balances(balances, input_dir, output_dir):
     for bank, bank_data in balances.items():

@@ -149,15 +149,15 @@ def frame_csv(csv_path):
     df['original_id'] = df['original_id'].astype(str)
     return df
 
+
 def frame_dir(dir_path="data/02_reconciled"):
     full_df = pd.DataFrame()
-
     for file_name in os.listdir(dir_path):
         if file_name.endswith(".csv"):
             file_path = os.path.join(dir_path, file_name)
             df = frame_csv(file_path)
+            df['date'] = pd.to_datetime(df['date'], errors='coerce')
             full_df = pd.concat([full_df, df], ignore_index=True)
-
     return full_df
 
 

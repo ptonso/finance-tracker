@@ -13,8 +13,7 @@ class Interact:
         self.output_path = output_csv_file if output_csv_file else input_csv
         self.df = frame_csv(input_csv_file)
 
-        lookup_json_path = "data/category_lookup.json"
-        self.categories = load_categories(lookup_json_path)
+        self.categories = load_categories()
 
     def _save_changes(self):
         """Save the current dataframe to CSV."""
