@@ -2,18 +2,17 @@
 .env
 
 # Ignore all files inside these folders
-/data/00_raw/*
-/data/01_cleaned/*
-/data/02_categorized/*
-/data/03_reconciled/*
-
+/data/00--raw/*
+/data/01--cleaned/*
+/data/02--categorized/*
+/data/03--reconciled/*
 /data/model/*
 
 # Allow tracking of the folders themselves
-!/data/00_raw/
-!/data/01_cleaned/
-!/data/02_categorized/
-!/data/03_reconciled/
+!/data/00--raw/
+!/data/01--cleaned/
+!/data/02--categorized/
+!/data/03--reconciled/
 !/data/model/
 
 # Ignore Python cache files and folders
@@ -21,8 +20,8 @@ __pycache__/
 **/__pycache__/
 
 # complex functionality
-/data/my_category_lookup.json
-/data/my_balances.json
+/data/lookup/my_category_lookup.json
+/data/lookup/my_balances.json
 
 # Ignore virtual environment
 /venv/

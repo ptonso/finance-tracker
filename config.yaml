@@ -1,0 +1,85 @@
+# config.yaml
+
+# General Settings
+project_name: "Finance Tracker"
+version: "3.1"
+author: "Pedro T"
+logging_level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+
+# Supported banks
+banks:
+  - "nubank"
+  - "inter"
+
+# Paths
+paths:
+  data_raw:         "data/00--raw/"
+  data_cleaned:     "data/01--cleaned/"
+  data_categorized: "data/02--categorized/"
+  data_reconciled:  "data/03--reconciled/"
+  data_curated:     "data/04--curated/"
+  data_dashboards:  "data/dashboards/"
+  data_lookup:      "data/lookup/"
+
+  # Notebooks
+  notebooks:
+    analyzing: "./10_analyzing.ipynb"
+
+  # Source code directories
+  src_root: "./src/"
+  src_dashboard: "./src/dashboard/"
+  src_download: "./src/download/"
+  src_processing: "./src/processing/"
+  src_inter: "./src/inter/"
+  src_tests: "./src/tests/"
+
+  # Screenshots
+  screenshots: "./screenshots/"
+
+  # Config and logging
+  configs: "./config.yaml"
+  logs: "./logs/"
+
+# Data Processing Settings
+data_processing:
+  standard_columns:
+    - date
+    - bank
+    - income
+    - outcome
+    - balance
+    - type
+    - category
+    - participant
+    - description
+    - original_id
+  default_category: "other"
+  default_type: "other"
+
+# Lookup Settings
+lookup:
+  type: "./data/lookup/my_type_lookup.json"
+  category: "./data/lookup/my_category_lookup.json"
+  balances: "./data/lookup/my_balances.json"
+
+# Dashboards Settings
+dashboards:
+  cashflow: "./src/dashboard/cashflow_dash.py"
+  category: "./src/dashboard/category_dash.py"
+  planner: "./src/dashboard/planner_dash.py"
+  scenario: "./src/dashboard/scenario_dash.py"
+  output_dir: "./data/dashboards/"
+
+# Logging Configuration
+logging:
+  file: "./logs/project.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  level: "INFO"
+
+# Pipeline Settings
+pipeline:
+  steps:
+    - download_data
+    - clean_data
+    - categorize_data
+    - reconcile_data

@@ -31,10 +31,13 @@ def generate_transactions(start_date, months=20, transactions_per_month=70):
     balances = []
     categories_list = []
     descriptions = []
+    participant = []
     original_ids = []
     
     balance = 0.0
     current_date = start_date
+
+    possible_participants = ["Alice", "Bob", "Charlie", "Dana", "Eve"]
     
     for month in range(months):
         for _ in range(transactions_per_month):
@@ -68,6 +71,7 @@ def generate_transactions(start_date, months=20, transactions_per_month=70):
             balances.append(balance)
             categories_list.append(category)
             descriptions.append(f"Sample description for {category}")
+            participant.append(random.choice(possible_participants))
             original_ids.append(random_string())
         
         current_date = next_month
@@ -80,6 +84,7 @@ def generate_transactions(start_date, months=20, transactions_per_month=70):
         'balance': balances,
         'category': categories_list,
         'description': descriptions,
+        'participant': participant,
         'original_id': original_ids
     })
     df['date'] = pd.to_datetime(df['date'], format='%Y-%m-%d')

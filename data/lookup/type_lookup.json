@@ -1,0 +1,27 @@
+{
+    "fixed": {
+        "rules": [
+            {
+                "name": "lookup",
+                "keywords": ["test1", "test2"],
+                "condition": "lambda tx: any(keywords in tx['description'] for keyword self.current_rule['keywords'])"
+            }
+        ]
+    },
+    "variable": {
+        "rules": [
+            {
+                "name": "others",
+                "condition": "lambda tx: not tx['type'] == 'fixed' AND tx['outcome'] > 0"
+            }
+        ]
+    },
+    "income": {
+        "rules": [
+            {
+                "name": "income-entry",
+                "condition": "lambda tx: tx['income'] > 0"
+            }
+        ]
+    }
+}
